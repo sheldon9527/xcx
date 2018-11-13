@@ -175,6 +175,8 @@ return [
          Zizaco\Entrust\EntrustServiceProvider::class,
          // view composer
          App\Providers\ComposerServiceProvider::class,
+         //baum
+         Baum\Providers\BaumServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -184,6 +186,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
 
     ],
 

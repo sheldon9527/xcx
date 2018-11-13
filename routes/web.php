@@ -110,5 +110,22 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'manager'], function () {
             'as' => 'admin.permissions.index',
             'uses' => 'PermissionController@index',
         ]);
+        # categories
+        Route::get('categories', [
+            'as' => 'admin.categories.index',
+            'uses' => 'CategoryController@index',
+        ]);
+        Route::post('categories', [
+            'as' => 'admin.categories.store',
+            'uses' => 'CategoryController@store',
+        ]);
+        Route::put('categories/{id}', [
+            'as' => 'admin.categories.update',
+            'uses' => 'CategoryController@update',
+        ]);
+        Route::delete('categories/{id}', [
+            'as' => 'admin.categories.destroy',
+            'uses' => 'CategoryController@destroy',
+        ]);
     });
 });

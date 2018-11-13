@@ -15,6 +15,12 @@
 				}} treeview"><a href="{{route('admin.dashboard')}}"><i class="fa fa-dashboard"></i> <span>仪表盘</span> </a>
               </li>
 
+			  <li class="{{\Route::is('admin.categories.*') ? 'active' : ''}}">
+					<a href="{{route('admin.categories.index')}}">
+						<i class="fa fa-sitemap"></i><span>页面分类</span>
+					</a>
+				</li>
+
 				<li class="{{\Route::is('admin.admins.*','admin.roles.*','admin.permissions.*') ? 'active' : ''}}">
 				   <a href="{{route('admin.admins.index')}}">
 					   <i class="fa fa-user-secret"></i><span>管理员及权限</span>
