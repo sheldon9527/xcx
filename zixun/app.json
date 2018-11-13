@@ -1,0 +1,37 @@
+{
+  "pages":[
+    "pages/index/index",
+	"pages/index/detail",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle":"white",
+    "backgroundColor": "#eaeaea"
+  },
+  "tabBar": {
+    "color": "black",
+    "borderStyle": "white",
+    "selectedColor": "rgb(176,170,168)",
+    "backgroundColor": "white",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": ""
+    },{
+      "pagePath": "pages/index/index",
+      "text": "资讯",
+      "iconPath": "images/tabBar/tabBar_essence_click_icon.png",
+      "selectedIconPath": "images/tabBar/tabBar_essence_icon.png"
+    },
+    {
+      "pagePath": "pages/index/index",
+      "text": ""
+    }]
+  },
+  "networkTimeout": {
+    "request": 15000
+  },
+  "debug":false
+}
