@@ -127,5 +127,21 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'manager'], function () {
             'as' => 'admin.categories.destroy',
             'uses' => 'CategoryController@destroy',
         ]);
+
+        /**
+         * 文章
+         */
+        Route::get('articles', [
+            'as' => 'admin.articles.index',
+            'uses' => 'ArticleController@index',
+        ]);
+        Route::get('articles/create', [
+            'as' => 'admin.articles.create',
+            'uses' => 'ArticleController@create',
+        ]);
+        Route::post('articles/store', [
+            'as' => 'admin.articles.store',
+            'uses' => 'ArticleController@store',
+        ]);
     });
 });

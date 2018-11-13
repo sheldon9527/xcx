@@ -15,6 +15,25 @@
 				}} treeview"><a href="{{route('admin.dashboard')}}"><i class="fa fa-dashboard"></i> <span>仪表盘</span> </a>
               </li>
 
+			  <li class="{{\Route::is('admin.articles.*') ? 'active' : null }} treeview">
+					 <a href="#">
+						 <i class="fa fa-android"></i><span>文章管理</span>
+						 <i class="fa fa-angle-left pull-right"></i>
+					 </a>
+					 <ul class="treeview-menu">
+						 <li class="{{\Route::is('admin.articles.index') ? 'active' : null }} treeview">
+							 <a href="{{route('admin.articles.index')}}">
+								 <i class="fa fa-circle-o"></i>文章列表
+							 </a>
+						 </li>
+						 <li class="{{\Route::is('admin.articles.create') ? 'active' : null }} treeview">
+							<a href="{{route('admin.articles.create')}}">
+								<i class="fa fa-circle-o"></i>创建文章
+							</a>
+						</li>
+					 </ul>
+			  </li>
+
 			  <li class="{{\Route::is('admin.categories.*') ? 'active' : ''}}">
 					<a href="{{route('admin.categories.index')}}">
 						<i class="fa fa-sitemap"></i><span>页面分类</span>
