@@ -6,6 +6,7 @@ use App\Http\Requests\Admin\Article\StoreRequest;
 use App\Http\Requests\Admin\Article\IndexRequest;
 use App\Models\Article;
 use App\Models\Category;
+use QL\QueryList;
 
 class ArticleController extends BaseController
 {
@@ -16,27 +17,13 @@ class ArticleController extends BaseController
      */
     public function index(IndexRequest $request)
     {
-        $advertisers = Article::query();
-        if ($applicationId = $request->get('application_id')) {
-            $advertisers->where('application_id', $applicationId);
-        }
-        if ($advertiserCategoryId = $request->get('advertiser_category_id')) {
-            $advertisers->where('advertiser_category_id', $advertiserCategoryId);
-        }
-        if ($advStyleId = $request->get('adv_style_id')) {
-            $advertisers->where('adv_style_id', $advStyleId);
-        }
+        $articles = Article::query();
         if ($status = $request->get('status')) {
-            $advertisers->where('status', $status);
+            $articles->where('status', $status);
         }
-        $advertisers = $advertisers->orderBy('status', 'asc')->orderBy('id', 'desc')->paginate();
-        $advStyles = AdvStyle::all();
-        $advertiserCategories = AdvertiserCategory::all();
-        $applications = Application::all();
+        $articles = $articles->orderBy('status', 'asc')->orderBy('id', 'desc')->paginate();
 
-        return view('admin.advertiser.index', compact('advertisers', 'advStyles', 'status', 'applicationId', 'advStyleId', 'advertiserCategories', 'advertiserCategoryId', 'applications'));
-
-        return view('admin.articles.index');
+        return view('admin.articles.index', compact('articles', 'status'));
     }
     /**
      * [create 创建公众号文章]
@@ -48,7 +35,6 @@ class ArticleController extends BaseController
 
         return view('admin.articles.create', compact('categories'));
     }
-
     /**
      * [store description]
      * @param  StoreRequest $request [description]
@@ -56,6 +42,31 @@ class ArticleController extends BaseController
      */
     public function store(StoreRequest $request)
     {
-        dd($request->all());
+        $categoryArray = $request->get('category_ids');
+        $status = $request->get('status');
+        $urlContents = $request->get('url_content');
+        $content = str_replace(array("\r\n", "\r", "\n"), ";", $urlContents);
+        $content = str_replace("\t", " ", $content);
+        $urls = explode(';', $content);
+        foreach ($urls as $url) {
+            $ql = QueryList::get($url);
+            $images = $ql->find('#js_content img')->attrs('data-src');
+            $title  = $ql->find('title')->text();
+            $aArray = $ql->find('#profileBt a')->texts();
+            $username = $aArray?$aArray[0]:'未知';
+            $coverImage = '';
+            if ($images) {
+                $coverImage = $images[0];
+            }
+            $article  = new Article();
+            $article->user_name = $username;
+            $article->title = $title;
+            $article->cover_image = $coverImage;
+            $article->url = $url;
+            $article->status = $status;
+            $article->save();
+        }
+
+        return redirect(route('admin.articles.index'));
     }
 }
