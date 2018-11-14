@@ -20,40 +20,42 @@ class ArticleController extends BaseController
      * @apiParam {integer} [type] 类型id
      * @apiSuccessExample {json} Success-Response:
      * HTTP/1.1 200 OK
-     *{
+      * {
      *    "data": [
      *        {
-     *            "id": 25,
-     *            "user_name": "凡小西",
-     *            "title": "求助：18岁儿子抽屉有开封的避孕套",
-     *            "cover_image": "https://mmbiz.qpic.cn/mmbiz_jpg/pZxuQGABsPl5QmYZqsrSwibll8lDQPLicZaibWECwYbxsUKibEkLpjzprviaZqQYkBysNEoYHen90uMrmj19OeFu4zw/640?wx_fmt=jpeg",
-     *            "url": "https://mp.weixin.qq.com/s/JWdbZZ-wCv383NHeTBJEZw",
-     *            "status": "active",
-     *            "content": "",
-     *            "created_at": "2018-11-13 18:51:13",
-     *            "updated_at": "2018-11-13 18:51:13"
+     *            "id": 13,
+     *            "user_name": "最暖心语录",
+     *            "title": "饭前吃一物,排出体内10年湿，热，毒!健康又漂亮,神奇!",
+     *            "cover_image": "https://mmbiz.qpic.cn/mmbiz_jpg/POnB6xNSXLWK5oicS25opsK28xnIjKl3gicB0S6wlsKM8M4hU5AlSjn1w5AfIIrScjCRJQuqsnP8v0N998bz9b8Q/640?wx_fmt=jpeg",
+     *            "url": "https://mp.weixin.qq.com/s/px8X56klwle6tjZPcC2QAQ",
+     *            "created_time": "2018-11-13"
      *        },
      *        {
-     *            "id": 29,
-     *            "user_name": "凡小西",
-     *            "title": "求助：18岁儿子抽屉有开封的避孕套",
-     *            "cover_image": "https://mmbiz.qpic.cn/mmbiz_jpg/pZxuQGABsPl5QmYZqsrSwibll8lDQPLicZaibWECwYbxsUKibEkLpjzprviaZqQYkBysNEoYHen90uMrmj19OeFu4zw/640?wx_fmt=jpeg",
-     *            "url": "https://mp.weixin.qq.com/s/JWdbZZ-wCv383NHeTBJEZw",
-     *            "status": "active",
-     *            "content": "",
-     *            "created_at": "2018-11-13 18:51:21",
-     *            "updated_at": "2018-11-13 18:51:21"
-     *        }
+     *            "id": 14,
+     *            "user_name": "华商报汽车周刊",
+     *            "title": "说说你对新能源的看法， 试试宝马的插电混动汽车......",
+     *            "cover_image": "https://mmbiz.qpic.cn/mmbiz_jpg/Jyco923vDiajYuIQ4qmLjZKgxIwjHcItHUc5sxuh262to5yu9pMicsuDt2M8k3sozbvnRf5mpwS7ics5AaK7fyKtw/640?wx_fmt=jpeg",
+     *            "url": "https://mp.weixin.qq.com/s/5hUEJjAHEkJG_tWVTJPBbw",
+     *            "created_time": "2018-11-13"
+     *        },
+     *        {
+     *            "id": 15,
+     *            "user_name": "最美妆容",
+     *            "title": "饭前吃一物,排出体内10年湿，热，毒!健康又漂亮,神奇!",
+     *            "cover_image": "https://mmbiz.qpic.cn/mmbiz_jpg/POnB6xNSXLWK5oicS25opsK28xnIjKl3gicB0S6wlsKM8M4hU5AlSjn1w5AfIIrScjCRJQuqsnP8v0N998bz9b8Q/640?wx_fmt=jpeg",
+     *            "url": "https://mp.weixin.qq.com/s/eHxjSVshr1mE3At4O8iEtw",
+     *            "created_time": "2018-11-13"
+     *        },
      *    ],
      *    "meta": {
      *        "pagination": {
      *            "total": 19,
-     *            "count": 9,
+     *            "count": 10,
      *            "per_page": 10,
-     *            "current_page": 2,
+     *            "current_page": 1,
      *            "total_pages": 2,
      *            "links": {
-     *                "previous": "http://www.xcx.me/api/articles?page=1"
+     *                "next": "http://www.xcx.me/api/articles?page=2"
      *            }
      *        }
      *    }

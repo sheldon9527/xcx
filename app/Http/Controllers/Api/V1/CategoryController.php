@@ -17,6 +17,26 @@ class CategoryController extends BaseController
      * @apiPermission none
      * @apiSuccessExample {json} Success-Response:
      * HTTP/1.1 200 OK
+     *{
+     *    "data": [
+     *        {
+     *            "id": 1,
+     *            "name": "科技"
+     *        },
+     *        {
+     *            "id": 2,
+     *            "name": "人文"
+     *        },
+     *        {
+     *            "id": 3,
+     *            "name": "教育"
+     *        },
+     *        {
+     *            "id": 4,
+     *            "name": "咨询"
+     *        }
+     *    ]
+     *}
      */
     public function index(Request $request)
     {

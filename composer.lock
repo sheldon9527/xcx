@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "08258dc82453cbf89e031191a5b54230",
+    "content-hash": "b689c0e32ebb661f494f9242941e7b21",
     "packages": [
         {
             "name": "baum/baum",
@@ -1444,16 +1444,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.30.0",
+            "version": "1.34.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "863a1a651ea324e1838da3a52753a4239b9d4bea"
+                "reference": "b9a444d829c9a16735aceca1b173e765745bcc0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/863a1a651ea324e1838da3a52753a4239b9d4bea",
-                "reference": "863a1a651ea324e1838da3a52753a4239b9d4bea",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/b9a444d829c9a16735aceca1b173e765745bcc0c",
+                "reference": "b9a444d829c9a16735aceca1b173e765745bcc0c",
                 "shasum": ""
             },
             "require": {
@@ -1461,10 +1461,20 @@
                 "symfony/translation": "~2.6 || ~3.0 || ~4.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "~2",
                 "phpunit/phpunit": "^4.8.35 || ^5.7"
             },
+            "suggest": {
+                "friendsofphp/php-cs-fixer": "Needed for the `composer phpcs` command. Allow to automatically fix code style.",
+                "phpstan/phpstan": "Needed for the `composer phpstan` command. Allow to detect potential errors."
+            },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Carbon\\Laravel\\ServiceProvider"
+                    ]
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "": "src/"
@@ -1488,7 +1498,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-06-15T11:52:26+00:00"
+            "time": "2018-11-13T08:26:10+00:00"
         },
         {
             "name": "nikic/php-parser",
