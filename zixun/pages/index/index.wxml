@@ -9,7 +9,7 @@
 
 <swiper class="swiper" current="{{currentTopItem}}" bindchange="bindChange" duration="300" style="height:{{swiperHeight}}px" >
 
-  <!--全部-->
+  <!--all-->
   <swiper-item>
     <scroll-view class="scrollView" scroll-y="true" bindscrolltolower="loadMoreData" >
 
@@ -22,11 +22,11 @@
     </scroll-view>
   </swiper-item>
 
-  <!--视频-->
+  <!--one-->
   <swiper-item>
     <scroll-view class="scrollView" scroll-y="true" bindscrolltolower="loadMoreData" bindscrolltoupper="refreshData" >
 
-      <block wx:for="{{videoDataList}}" wx:for-item="item">
+      <block wx:for="{{oneDataList}}" wx:for-item="item">
           <navigator url="detail?url={{item.url}}">
             <template is="mainTabCell" data="{{item}}" />
           </navigator>
@@ -35,11 +35,11 @@
     </scroll-view>
   </swiper-item>
 
-  <!--图片-->
+  <!--two-->
   <swiper-item>
     <scroll-view class="scrollView" scroll-y="true" bindscrolltolower="loadMoreData" bindscrolltoupper="refreshData">
 
-      <block wx:for="{{pictureDataList}}" wx:for-item="item">
+      <block wx:for="{{twoDataList}}" wx:for-item="item">
           <navigator url="detail?url={{item.url}}">
             <template is="mainTabCell" data="{{item}}" />
           </navigator>
@@ -48,11 +48,11 @@
     </scroll-view>
   </swiper-item>
 
-  <!--段子-->
+  <!--three-->
   <swiper-item>
     <scroll-view class="scrollView" scroll-y="true" bindscrolltolower="loadMoreData" bindscrolltoupper="refreshData">
 
-      <block wx:for="{{textDataList}}" wx:for-item="item">
+      <block wx:for="{{threeDataList}}" wx:for-item="item">
           <navigator url="detail?url={{item.url}}">
             <template is="mainTabCell" data="{{item}}" />
           </navigator>
@@ -61,11 +61,11 @@
     </scroll-view>
   </swiper-item>
 
-  <!--声音-->
+  <!--four-->
   <swiper-item>
     <scroll-view class="scrollView" scroll-y="true" bindscrolltolower="loadMoreData" bindscrolltoupper="refreshData">
 
-      <block wx:for="{{voiceDataList}}" wx:for-item="item">
+      <block wx:for="{{fourDataList}}" wx:for-item="item">
           <navigator url="detail?url={{item.url}}">
             <template is="mainTabCell" data="{{item}}" />
           </navigator>

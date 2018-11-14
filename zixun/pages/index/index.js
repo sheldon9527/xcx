@@ -5,20 +5,20 @@ var page = 1;//页码
 //1->全部;41->视频;10->图片;29->段子;31->声音;
 var DATATYPE = {
     ALLDATATYPE : "0",
-    VIDEODATATYPE : "1",
-    PICTUREDATATYPE : "2",
-    TEXTDATATYPE : "3",
-    VOICEDATATYPE : "4"
+    ONEDATATYPE : "1",
+    TWODATATYPE : "2",
+    THREEDATATYPE : "3",
+    FOURDATATYPE : "4"
 };
 
 Page({
   //页面的初始化数据
   data:{
     allDataList:[],
-    videoDataList:[],
-    pictureDataList:[],
-    textDataList:[],
-    voiceDataList:[],
+    oneDataList:[],
+    twoDataList:[],
+    threeDataList:[],
+    fourDataList:[],
     topTabItems:[],
     currentTopItem: "0",
     swiperHeight:"0"
@@ -95,20 +95,20 @@ Page({
         return this.data.allDataList.length > 0 ? false : true;
 
       //视频
-      case DATATYPE.VIDEODATATYPE:
-        return this.data.videoDataList.length > 0 ? false : true;
+      case DATATYPE.ONEDATATYPE:
+        return this.data.oneDataList.length > 0 ? false : true;
 
       //图片
-      case DATATYPE.PICTUREDATATYPE:
-        return this.data.pictureDataList.length > 0 ? false : true;
+      case DATATYPE.TWODATATYPE:
+        return this.data.twoDataList.length > 0 ? false : true;
 
       //段子
-      case DATATYPE.TEXTDATATYPE:
-        return this.data.textDataList.length > 0 ? false : true;
+      case DATATYPE.THREEDATATYPE:
+        return this.data.threeDataList.length > 0 ? false : true;
 
       //声音
-      case DATATYPE.VOICEDATATYPE:
-        return this.data.voiceDataList.length > 0 ? false : true;
+      case DATATYPE.FOURDATATYPE:
+        return this.data.fourDataList.length > 0 ? false : true;
 
       default:
         break;
@@ -127,31 +127,31 @@ Page({
         });
         break;
       //视频
-      case DATATYPE.VIDEODATATYPE:
+      case DATATYPE.ONEDATATYPE:
         // videoMaxtime = res.data.info.maxtime;
         target.setData({
-          videoDataList: res.data.data
+          oneDataList: res.data.data
         });
         break;
       //图片
-      case DATATYPE.PICTUREDATATYPE:
+      case DATATYPE.TWODATATYPE:
         // pictureMaxtime = res.data.info.maxtime;
         target.setData({
-            pictureDataList: res.data.data
+            twoDataList: res.data.data
         });
         break;
       //段子
-      case DATATYPE.TEXTDATATYPE:
+      case DATATYPE.THREEDATATYPE:
         // textMaxtime = res.data.info.maxtime;
         target.setData({
-          textDataList: res.data.data
+          threeDataList: res.data.data
         });
         break;
       //声音
-      case DATATYPE.VOICEDATATYPE:
+      case DATATYPE.FOURDATATYPE:
         // voiceMaxtime = res.data.info.maxtime;
         target.setData({
-          voiceDataList: res.data.data
+          fourDataList: res.data.data
         });
         break;
       default:
@@ -187,27 +187,27 @@ Page({
         });
         break;
       //视频
-      case DATATYPE.VIDEODATATYPE:
+      case DATATYPE.ONEDATATYPE:
         target.setData({
-          videoDataList: target.data.videoDataList.concat(res.data.data)
+          oneDataList: target.data.oneDataList.concat(res.data.data)
         });
         break;
       //图片
-      case DATATYPE.PICTUREDATATYPE:
+      case DATATYPE.TWODATATYPE:
         target.setData({
-            pictureDataList: target.data.pictureDataList.concat(res.data.data)
+            twoDataList: target.data.twoDataList.concat(res.data.data)
         });
         break;
       //段子
-      case DATATYPE.TEXTDATATYPE:
+      case DATATYPE.THREEDATATYPE:
         target.setData({
-          textDataList: target.data.textDataList.concat(res.data.data)
+          threeDataList: target.data.threeDataList.concat(res.data.data)
         });
         break;
       //声音
-      case DATATYPE.VOICEDATATYPE:
+      case DATATYPE.FOURDATATYPE:
         target.setData({
-          voiceDataList: target.data.voiceDataList.concat(res.data.data)
+          fourDataList: target.data.fourDataList.concat(res.data.data)
         });
         break;
       default:
