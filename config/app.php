@@ -170,7 +170,6 @@ return [
 
          // 运营端后台
          App\Providers\AdminServiceProvider::class,
-         App\Providers\UserServiceProvider::class,
          // 权限
          Zizaco\Entrust\EntrustServiceProvider::class,
          // view composer

@@ -13,16 +13,12 @@
 $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', ['namespace' => 'App\Http\Controllers\Api\V1'], function ($api) {
-    $api->get('advertisers', [
-        'as' => 'api.advertisers.index',
-        'uses' => 'AdvertiserController@index'
+    $api->get('articles', [
+        'as' => 'api.articles.index',
+        'uses' => 'ArticleController@index'
     ]);
-    $api->get('showReport', [
-        'as' => 'api.advertisers.showReport',
-        'uses' => 'AdvertiserController@showReport'
-    ]);
-    $api->get('clickReport', [
-        'as' => 'api.advertisers.clickReport',
-        'uses' => 'AdvertiserController@clickReport'
+    $api->get('categories', [
+        'as' => 'api.categories.index',
+        'uses' => 'CategoryController@index'
     ]);
 });
