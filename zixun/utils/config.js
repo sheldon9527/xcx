@@ -1,3 +1,3 @@
 module.exports = {
-    BaseURL:"http://api.budejie.com/api/api_open.php"
+    BaseURL:"https://d.beikexi.com/api"
 };

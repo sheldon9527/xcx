@@ -19,9 +19,9 @@ function formatNumber(n) {
 }
 
 //网络请求
-function request(parameters = "",success, method = "GET", header = {}) {
+function request(path = "",parameters = "",success, method = "GET", header = {}) {
   wx.request({
-    url: config.BaseURL +(method == "GET" ? "?" : "")+ parameters,
+    url: config.BaseURL+ path +(method == "GET" ? "?" : "")+ parameters,
     data: {},
     method: method, // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
     header: header ? header : "application/json", // 设置请求的 header

@@ -2,7 +2,7 @@
 const util = require("../../utils/util.js");
 //播放的视频或者音频的ID
 var playingID = -1;
-var types = ["1","41","10","29","31"];
+var types = ["0"];
 var page = 1;//页码
 var allMaxtime = 0;//全部 最大时间
 var videoMaxtime = 0;//视频 最大时间
@@ -12,11 +12,11 @@ var voiceMaxtime = 0;//声音 最大时间
 
 //1->全部;41->视频;10->图片;29->段子;31->声音;
 var DATATYPE = {
-    ALLDATATYPE : "1",
-    VIDEODATATYPE : "41",
-    PICTUREDATATYPE : "10",
-    TEXTDATATYPE : "29",
-    VOICEDATATYPE : "31"
+    ALLDATATYPE : "0",
+    VIDEODATATYPE : "1",
+    PICTUREDATATYPE : "2",
+    TEXTDATATYPE : "3",
+    VOICEDATATYPE : "4"
 };
 
 Page({
@@ -27,13 +27,14 @@ Page({
     pictureDataList:[],
     textDataList:[],
     voiceDataList:[],
-    topTabItems:["全部","视频","图片","段子","声音"],
+    topTabItems:[],
     currentTopItem: "0",
     swiperHeight:"0"
   },
   //页面初始化 options为页面跳转所带来的参数
   //生命周期函数，监听页面加载
   onLoad:function(options){
+	this.getCategoryData();
     this.refreshNewData();
   },
   //生命周期函数-监听页面初次渲染完毕
@@ -78,7 +79,7 @@ Page({
     var that = this;
     var parameters = 'a=list&c=data&type='+types[this.data.currentTopItem];
     console.log("parameters = "+parameters);
-    util.request(parameters,function(res){
+    util.request('/articles',parameters,function(res){
       page = 1;
       that.setNewDataWithRes(res,that);
       setTimeout(function(){
@@ -128,37 +129,37 @@ Page({
     switch(types[this.data.currentTopItem]) {
       //全部
       case DATATYPE.ALLDATATYPE:
-        allMaxtime = res.data.info.maxtime;
+        // allMaxtime = '1542168122';
         target.setData({
-          allDataList: res.data.list
+          allDataList: res.data.data
         });
         break;
       //视频
       case DATATYPE.VIDEODATATYPE:
-        videoMaxtime = res.data.info.maxtime;
+        // videoMaxtime = res.data.info.maxtime;
         target.setData({
-          videoDataList: res.data.list
+          videoDataList: res.data.data
         });
         break;
       //图片
       case DATATYPE.PICTUREDATATYPE:
-        pictureMaxtime = res.data.info.maxtime;
+        // pictureMaxtime = res.data.info.maxtime;
         target.setData({
-            pictureDataList: res.data.list
+            pictureDataList: res.data.data
         });
         break;
       //段子
       case DATATYPE.TEXTDATATYPE:
-        textMaxtime = res.data.info.maxtime;
+        // textMaxtime = res.data.info.maxtime;
         target.setData({
-          textDataList: res.data.list
+          textDataList: res.data.data
         });
         break;
       //声音
       case DATATYPE.VOICEDATATYPE:
-        voiceMaxtime = res.data.info.maxtime;
+        // voiceMaxtime = res.data.info.maxtime;
         target.setData({
-          voiceDataList: res.data.list
+          voiceDataList: res.data.data
         });
         break;
       default:
@@ -173,9 +174,9 @@ Page({
     util.showLoading();
 
     var that = this;
-    var parameters = 'a=list&c=data&type='+types[this.data.currentTopItem] + "&page="+(page+1) + "&maxtime="+this.getMaxtime();
+    var parameters = 'a=list&c=data&type='+types[this.data.currentTopItem] + "&page="+(page+1);
     console.log("parameters = "+parameters);
-    util.request(parameters,function(res){
+    util.request('/articles',parameters,function(res){
       page += 1;
       that.setMoreDataWithRes(res,that);
       setTimeout(function(){
@@ -184,68 +185,37 @@ Page({
         },1000);
       });
   },
-
-  //获取最大时间
-  getMaxtime:function(){
-    switch(types[this.data.currentTopItem]) {
-      //全部
-      case DATATYPE.ALLDATATYPE:
-        return allMaxtime ;
-      //视频
-      case DATATYPE.VIDEODATATYPE:
-        return videoMaxtime ;
-      //图片
-      case DATATYPE.PICTUREDATATYPE:
-        return pictureMaxtime ;
-
-      //段子
-      case DATATYPE.TEXTDATATYPE:
-        return textMaxtime ;
-
-      //声音
-      case DATATYPE.VOICEDATATYPE:
-        return voiceMaxtime;
-      default:
-        return 0;
-    }
-  },
   //设置加载更多的数据
   setMoreDataWithRes(res,target) {
     switch(types[this.data.currentTopItem]) {
       //全部
       case DATATYPE.ALLDATATYPE:
-        allMaxtime = res.data.info.maxtime;
         target.setData({
-          allDataList: target.data.allDataList.concat(res.data.list)
+          allDataList: target.data.allDataList.concat(res.data.data)
         });
         break;
       //视频
       case DATATYPE.VIDEODATATYPE:
-        videoMaxtime = res.data.info.maxtime;
         target.setData({
-          videoDataList: target.data.videoDataList.concat(res.data.list)
+          videoDataList: target.data.videoDataList.concat(res.data.data)
         });
-        console.log(array);
         break;
       //图片
       case DATATYPE.PICTUREDATATYPE:
-        pictureMaxtime = res.data.info.maxtime;
         target.setData({
-            pictureDataList: target.data.pictureDataList.concat(res.data.list)
+            pictureDataList: target.data.pictureDataList.concat(res.data.data)
         });
         break;
       //段子
       case DATATYPE.TEXTDATATYPE:
-        textMaxtime = res.data.info.maxtime;
         target.setData({
-          textDataList: target.data.textDataList.concat(res.data.list)
+          textDataList: target.data.textDataList.concat(res.data.data)
         });
         break;
       //声音
       case DATATYPE.VOICEDATATYPE:
-        voiceMaxtime = res.data.info.maxtime;
         target.setData({
-          voiceDataList: target.data.voiceDataList.concat(res.data.list)
+          voiceDataList: target.data.voiceDataList.concat(res.data.data)
         });
         break;
       default:
@@ -253,48 +223,23 @@ Page({
     }
   },
 
-  //视频播放开始播放
-  videoPlay:function(obj){
-    console.log("playingID = "+playingID);
-    console.log(obj);
-
-    playingID = obj.currentTarget.id;
-    //暂停音频的播放
-    if(this.audioContext) {
-      this.audioContext.pause();
-    }
-    //暂停上一条视频的播放
-    if(this.videoContext){
-      console.log(this.videoContext);
-      this.videoContext.pause();
-    }
-    this.videoContext = wx.createVideoContext(obj.currentTarget.id);
+  //获取分类并赋值
+  getCategoryData:function(){
+	var that = this;
+	util.request('/categories','',function(res){
+	  that.setCategoryWithRes(res,that);
+	  });
   },
-
-  //视频结束播放
-  videoEndPlay:function(obj){
-    this.videoContext.seek(0);
+  //设置新分类数据
+  setCategoryWithRes:function(res,target){
+	  var categoryName =['全部'];
+	  var categories = res.data.data;
+	  for (var i = 0; i < categories.length; i++) {
+	  	types.push(categories[i]['id'].toString());
+		categoryName.push(categories[i]['name']);
+	  }
+	  target.setData({
+		topTabItems: categoryName
+	  });
   },
-
-  //音频播放
-  //音频开始播放
-  audioplay:function(obj){
-
-    //播放的不是同一条音频就暂停之前的音频播放
-    //结束视频的播放
-    if (this.videoContext) {
-      this.videoContext.pause();
-    }
-    playingID = obj.currentTarget.id;
-    this.audioContext = wx.createAudioContext(obj.currentTarget.id);
-  },
-  //音频结束播放
-  audioEndPlay:function(obj){
-    this.audioContext.seek(0);
-  },
-  //点击赞按钮
-  zanEvent:function(e){
-    console.log("------赞-------");
-    console.log(e);
-  }
 })

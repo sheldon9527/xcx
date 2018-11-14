@@ -14,7 +14,7 @@
     <scroll-view class="scrollView" scroll-y="true" bindscrolltolower="loadMoreData" >
 
       <block wx:for="{{allDataList}}" wx:for-item="item">
-          <navigator url="detail?url=https://mp.weixin.qq.com/s/2sfL6YcSSsLuc3cFN1s1lA">
+          <navigator url="detail?url={{item.url}}">
             <template is="mainTabCell" data="{{item}}" />
           </navigator>
       </block>
@@ -27,7 +27,7 @@
     <scroll-view class="scrollView" scroll-y="true" bindscrolltolower="loadMoreData" bindscrolltoupper="refreshData" >
 
       <block wx:for="{{videoDataList}}" wx:for-item="item">
-          <navigator url="detail?id={{item.id}}">
+          <navigator url="detail?url={{item.url}}">
             <template is="mainTabCell" data="{{item}}" />
           </navigator>
       </block>
@@ -40,7 +40,7 @@
     <scroll-view class="scrollView" scroll-y="true" bindscrolltolower="loadMoreData" bindscrolltoupper="refreshData">
 
       <block wx:for="{{pictureDataList}}" wx:for-item="item">
-          <navigator url="detail?id={{item.id}}">
+          <navigator url="detail?url={{item.url}}">
             <template is="mainTabCell" data="{{item}}" />
           </navigator>
       </block>
@@ -53,7 +53,7 @@
     <scroll-view class="scrollView" scroll-y="true" bindscrolltolower="loadMoreData" bindscrolltoupper="refreshData">
 
       <block wx:for="{{textDataList}}" wx:for-item="item">
-          <navigator url="detail?id={{item.id}}">
+          <navigator url="detail?url={{item.url}}">
             <template is="mainTabCell" data="{{item}}" />
           </navigator>
       </block>
@@ -66,7 +66,7 @@
     <scroll-view class="scrollView" scroll-y="true" bindscrolltolower="loadMoreData" bindscrolltoupper="refreshData">
 
       <block wx:for="{{voiceDataList}}" wx:for-item="item">
-          <navigator url="detail?id={{item.id}}">
+          <navigator url="detail?url={{item.url}}">
             <template is="mainTabCell" data="{{item}}" />
           </navigator>
       </block>
