@@ -13,4 +13,9 @@ class Article extends BaseModel
     {
         return url(config('admin.defaultImg'));
     }
+
+    public function categories()
+    {
+        return $this->belongsToMany('App\Models\Category');
+    }
 }

@@ -52,7 +52,7 @@ class ArticleController extends BaseController
             $ql = QueryList::get($url);
             $images = $ql->find('#js_content img')->attrs('data-src');
             $title  = $ql->find('title')->text();
-            $aArray = $ql->find('#profileBt a')->texts();
+            $aArray = $ql->find('#profileBt #js_name')->texts();
             $username = $aArray?$aArray[0]:'未知';
             $coverImage = '';
             if ($images) {
@@ -65,6 +65,7 @@ class ArticleController extends BaseController
             $article->url = $url;
             $article->status = $status;
             $article->save();
+            $article->categories()->attach($categoryArray);
         }
 
         return redirect(route('admin.articles.index'));
