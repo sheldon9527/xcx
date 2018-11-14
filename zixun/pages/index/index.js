@@ -1,15 +1,7 @@
 //index.js
 const util = require("../../utils/util.js");
-//播放的视频或者音频的ID
-var playingID = -1;
 var types = ["0"];
 var page = 1;//页码
-var allMaxtime = 0;//全部 最大时间
-var videoMaxtime = 0;//视频 最大时间
-var pictureMaxtime = 0;//图片 最大时间
-var textMaxtime = 0;//段子 最大时间
-var voiceMaxtime = 0;//声音 最大时间
-
 //1->全部;41->视频;10->图片;29->段子;31->声音;
 var DATATYPE = {
     ALLDATATYPE : "0",
@@ -77,7 +69,7 @@ Page({
     util.showLoading();
 
     var that = this;
-    var parameters = 'a=list&c=data&type='+types[this.data.currentTopItem];
+    var parameters = 'type='+types[this.data.currentTopItem];
     console.log("parameters = "+parameters);
     util.request('/articles',parameters,function(res){
       page = 1;
@@ -174,7 +166,7 @@ Page({
     util.showLoading();
 
     var that = this;
-    var parameters = 'a=list&c=data&type='+types[this.data.currentTopItem] + "&page="+(page+1);
+    var parameters = 'type='+types[this.data.currentTopItem] + "&page="+(page+1);
     console.log("parameters = "+parameters);
     util.request('/articles',parameters,function(res){
       page += 1;
