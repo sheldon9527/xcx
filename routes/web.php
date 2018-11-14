@@ -20,21 +20,16 @@ Route::pattern('oid', '[0-9]+');
 Route::pattern('alpha', '[A-Za-z]+');
 
 // Route::view('/', 'index');
-Route::get('/', function () {
-    return redirect(route('dashboard'));
-});
-// 登录页面
-Route::get('auth/login', [
-    'as' => 'auth.login.get',
-    'uses' => 'AuthController@getLogin',
+Route::get('/', [
+    'as' => 'admin.first',
+    'uses' => 'Admin\AuthController@getLogin',
 ]);
-
-Route::get('dashboard', [
-    'as' => 'dashboard',
-    'uses' => 'AuthController@dashboard',
-]);
-
 Route::group(['namespace' => 'Admin', 'prefix' => 'manager'], function () {
+    // 登录页面
+    Route::get('auth/login', [
+        'as' => 'auth.login.get',
+        'uses' => 'AuthController@getLogin',
+    ]);
     // 登录提交
     Route::post('auth/login', [
         'as' => 'admin.auth.login.post',

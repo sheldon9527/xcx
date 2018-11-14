@@ -22,7 +22,6 @@
 <section>
   <div class="stage">
     <div class="cbImage active signin agileits">
-		<h3>管理员登录</h3>
 		<form action="{{ route('admin.auth.login.post') }}" method="POST">
             @include('admin.common.errors', ['errors'=>$errors])
 			<input type="text" name="username"  placeholder="登录账号" value="{{old('username')}}" required>

@@ -7,6 +7,18 @@ use App\Http\Requests\Admin\Auth\StoreRequest;
 class AuthController extends BaseController
 {
     /**
+     * [getLogin 登录]
+     * @return [type] [description]
+     */
+    public function getLogin()
+    {
+        if ($this->user()) {
+            return redirect(route('admin.dashboard'));
+        }
+
+        return view('index');
+    }
+    /**
      * [postLogin 管理员登录]
      * @param  StoreRequest $request [description]
      * @return [type]                [description]
