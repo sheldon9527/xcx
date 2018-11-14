@@ -53,9 +53,12 @@ class ArticleController extends BaseController
             $images = $ql->find('#js_content img')->attrs('data-src');
             $title  = $ql->find('title')->text();
             $aArray = $ql->find('#profileBt #js_name')->texts();
-            $username = $aArray?$aArray[0]:'未知';
+            $username = '未知';
+            if (!empty($aArray->toArray())) {
+                $username = $aArray[0];
+            }
             $coverImage = '';
-            if ($images) {
+            if (!empty($images->toArray())) {
                 $coverImage = $images[0];
             }
             $article  = new Article();
