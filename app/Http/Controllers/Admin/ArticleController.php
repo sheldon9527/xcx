@@ -46,10 +46,10 @@ class ArticleController extends BaseController
         $status = $request->get('status');
         $urlContents = $request->get('url_content');
         $content = str_replace(array("\r\n", "\r", "\n"), ";", $urlContents);
-        $content = str_replace("\t", " ", $content);
+        $content = str_replace("\t", "", $content);
         $urls = explode(';', $content);
         foreach ($urls as $url) {
-            $ql = QueryList::get($url);
+            $ql = QueryList::get(trim($url));
             $images = $ql->find('#js_content img')->attrs('data-src');
             $title  = $ql->find('title')->text();
             $aArray = $ql->find('#profileBt #js_name')->texts();
@@ -62,7 +62,7 @@ class ArticleController extends BaseController
             $article->user_name = $username;
             $article->title = $title;
             $article->cover_image = $coverImage;
-            $article->url = $url;
+            $article->url = trim($url);
             $article->status = $status;
             $article->save();
             $article->categories()->attach($categoryArray);
