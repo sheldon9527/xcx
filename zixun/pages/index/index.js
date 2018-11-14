@@ -8,7 +8,8 @@ var DATATYPE = {
     ONEDATATYPE : "1",
     TWODATATYPE : "2",
     THREEDATATYPE : "3",
-    FOURDATATYPE : "4"
+    FOURDATATYPE : "4",
+	FIVEDATATYPE : "5"
 };
 
 Page({
@@ -19,6 +20,7 @@ Page({
     twoDataList:[],
     threeDataList:[],
     fourDataList:[],
+	fiveDataList:[],
     topTabItems:[],
     currentTopItem: "0",
     swiperHeight:"0"
@@ -90,28 +92,26 @@ Page({
   needLoadNewDataAfterSwiper:function(){
 
     switch(types[this.data.currentTopItem]) {
-      //全部
-      case DATATYPE.ALLDATATYPE:
-        return this.data.allDataList.length > 0 ? false : true;
-
-      //视频
-      case DATATYPE.ONEDATATYPE:
-        return this.data.oneDataList.length > 0 ? false : true;
-
-      //图片
-      case DATATYPE.TWODATATYPE:
-        return this.data.twoDataList.length > 0 ? false : true;
-
-      //段子
-      case DATATYPE.THREEDATATYPE:
-        return this.data.threeDataList.length > 0 ? false : true;
-
-      //声音
-      case DATATYPE.FOURDATATYPE:
-        return this.data.fourDataList.length > 0 ? false : true;
-
-      default:
-        break;
+      	//all
+      	case DATATYPE.ALLDATATYPE:
+        	return this.data.allDataList.length > 0 ? false : true;
+      	//one
+      	case DATATYPE.ONEDATATYPE:
+        	return this.data.oneDataList.length > 0 ? false : true;
+      	//two
+      	case DATATYPE.TWODATATYPE:
+        	return this.data.twoDataList.length > 0 ? false : true;
+      	//three
+      	case DATATYPE.THREEDATATYPE:
+        	return this.data.threeDataList.length > 0 ? false : true;
+      	//four
+      	case DATATYPE.FOURDATATYPE:
+        	return this.data.fourDataList.length > 0 ? false : true;
+      	//five
+		case DATATYPE.FIVEDATATYPE:
+	  		return this.data.fiveDataList.length > 0 ? false : true;
+      	default:
+        	break;
     }
 
     return false;
@@ -119,41 +119,43 @@ Page({
   //设置新数据
   setNewDataWithRes:function(res,target){
     switch(types[this.data.currentTopItem]) {
-      //全部
+      //all
       case DATATYPE.ALLDATATYPE:
-        // allMaxtime = '1542168122';
         target.setData({
           allDataList: res.data.data
         });
         break;
-      //视频
+      //one
       case DATATYPE.ONEDATATYPE:
-        // videoMaxtime = res.data.info.maxtime;
         target.setData({
           oneDataList: res.data.data
         });
         break;
-      //图片
+      //two
       case DATATYPE.TWODATATYPE:
-        // pictureMaxtime = res.data.info.maxtime;
         target.setData({
             twoDataList: res.data.data
         });
         break;
-      //段子
+      //three
       case DATATYPE.THREEDATATYPE:
-        // textMaxtime = res.data.info.maxtime;
         target.setData({
           threeDataList: res.data.data
         });
         break;
-      //声音
+      //four
       case DATATYPE.FOURDATATYPE:
-        // voiceMaxtime = res.data.info.maxtime;
         target.setData({
           fourDataList: res.data.data
         });
         break;
+	  //five
+      case DATATYPE.FIVEDATATYPE:
+        target.setData({
+          fiveDataList: res.data.data
+        });
+        break;
+
       default:
         break;
     }
@@ -180,36 +182,43 @@ Page({
   //设置加载更多的数据
   setMoreDataWithRes(res,target) {
     switch(types[this.data.currentTopItem]) {
-      //全部
+      //all
       case DATATYPE.ALLDATATYPE:
         target.setData({
           allDataList: target.data.allDataList.concat(res.data.data)
         });
         break;
-      //视频
+      //one
       case DATATYPE.ONEDATATYPE:
         target.setData({
           oneDataList: target.data.oneDataList.concat(res.data.data)
         });
         break;
-      //图片
+      //two
       case DATATYPE.TWODATATYPE:
         target.setData({
             twoDataList: target.data.twoDataList.concat(res.data.data)
         });
         break;
-      //段子
+      //three
       case DATATYPE.THREEDATATYPE:
         target.setData({
           threeDataList: target.data.threeDataList.concat(res.data.data)
         });
         break;
-      //声音
+      //four
       case DATATYPE.FOURDATATYPE:
         target.setData({
           fourDataList: target.data.fourDataList.concat(res.data.data)
         });
         break;
+	  //five
+	  case DATATYPE.FIVEDATATYPE:
+		target.setData({
+		   fiveDataList: target.data.fiveDataList.concat(res.data.data)
+		});
+		break;
+
       default:
         break;
     }
