@@ -4,16 +4,7 @@
   border: 1rpx solid #dddcdc;
 }
 
-/*头像*/
-.avator{
-  display: inline-block;
-  vertical-align: middle;
-  width:56rpx;
-  height: 56rpx;
-  margin-left: 14rpx;
-  margin-top: 14rpx;
 
-}
 .title-time{
   flex-direction: column;
   display: inline-block;
@@ -46,10 +37,11 @@
 }
 .content-text{
   display: block;
-  font-size: 30rpx;
+  font-size: 28rpx;
   line-height: 40rpx;
   margin-bottom: 14rpx;
-  color: #333333;
+  color: #39394c;
+  letter-spacing:4rpx;
 }
 .content-multimedia{
   text-align:center;
@@ -119,4 +111,16 @@
   float: right;
   margin-top: 5%;
   margin-right: 3rpx;
+}
+.bottom_text{
+	font-size: 23rpx;
+	color: #909090;
+}
+
+/*头像*/
+.cover_image{
+  display: inline-block;
+  vertical-align: middle;
+  width:220rpx;
+  height: 110rpx;
 }

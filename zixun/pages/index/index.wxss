@@ -7,7 +7,7 @@
   width: 750rpx;
   border-top: 1rpx solid #dddcdc;
   color: #7b7b7b;
-  font-size: 15px;
+  font-size: 18px;
   background-color: #f7f7f7;
   z-index: 9999;
   display: flex;

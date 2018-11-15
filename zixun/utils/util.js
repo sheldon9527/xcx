@@ -48,7 +48,7 @@ function showSuccess(title = "成功啦", duration = 2500){
   });
 }
 //loading提示
-function showLoading(title = "请稍后", duration = 5000) {
+function showLoading(title = "", duration = 5000) {
   wx.showToast({
       title: title ,
       icon: 'loading',
