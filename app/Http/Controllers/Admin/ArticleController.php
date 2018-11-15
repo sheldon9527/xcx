@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\Article\StoreRequest;
+use App\Http\Requests\Admin\Article\UpdateRequest;
 use App\Http\Requests\Admin\Article\IndexRequest;
 use App\Models\Article;
 use App\Models\Category;
@@ -72,6 +73,27 @@ class ArticleController extends BaseController
         }
 
         return redirect(route('admin.articles.index'));
+    }
+    /**
+     * [edit 编辑]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function edit($id)
+    {
+        $categories = Category::where('parent_id', 0)->get();
+
+        return view('admin.articles.edit', compact('categories'));
+    }
+    /**
+     * [update description]
+     * @param  [type]        $id      [description]
+     * @param  UpdateRequest $request [description]
+     * @return [type]                 [description]
+     */
+    public function update($id, UpdateRequest $request)
+    {
+        // code...
     }
     /**
      * [destroy 删除]

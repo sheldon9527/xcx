@@ -142,5 +142,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'manager'], function () {
             'as' => 'admin.articles.destroy',
             'uses' => 'ArticleController@destroy',
         ]);
+        Route::get('articles/{id}/edit', [
+            'as' => 'admin.articles.edit',
+            'uses' => 'ArticleController@edit',
+        ]);
+        Route::put('articles/{id}', [
+            'as' => 'admin.articles.update',
+            'uses' => 'ArticleController@update',
+        ]);
     });
 });
