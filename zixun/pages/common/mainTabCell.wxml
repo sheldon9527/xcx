@@ -6,11 +6,11 @@
 			<view class="left" style='width:69%;float:left;'>
 	            <text class="content-text">{{item.title}}</text>
 	            <view>
-					<view class='bottom_text' style='width:50%;float:left;'>
+					<view class='bottom_text' style='width:45%;float:left;'>
 						<text>{{item.created_time}}</text>
 					</view>
 
-					<view  class='bottom_text' style='width:50%;float:right;text-align: right;'>
+					<view  class='bottom_text' style='width:55%;float:right;text-align: right;'>
 	 				    <text>{{item.user_name}}</text>
 	 			    </view>
 	            </view>
