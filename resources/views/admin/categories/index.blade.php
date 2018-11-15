@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-12">
                 @include('admin.common.errors')
-                <a data-toggle="modal" data-target="#addRootModal" class="pull-left btn btn-success" type="button">主分类</a>
+                <a data-toggle="modal" data-target="#addRootModal" class="pull-left btn btn-success" type="button"><i class="fa fa-plus"></i></a>
             </div>
         </div>
         <div class="row">&nbsp;</div>
@@ -25,7 +25,7 @@
                     </thead>
                     <tbody>
                         @foreach($roots as $root)
-                            <tr class="root info" data-root-id={{$root->id}}>
+                            <tr class="root" data-root-id={{$root->id}}>
                                 <td>
                                     <a class="h3 text-danger">
                                         <i class="fa fa-angle-down" aria-hidden="true"></i>
