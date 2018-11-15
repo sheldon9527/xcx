@@ -138,5 +138,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'manager'], function () {
             'as' => 'admin.articles.store',
             'uses' => 'ArticleController@store',
         ]);
+        Route::delete('articles/{id}', [
+            'as' => 'admin.articles.destroy',
+            'uses' => 'ArticleController@destroy',
+        ]);
     });
 });

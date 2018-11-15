@@ -1,6 +1,6 @@
 @extends('admin.common.layout')
 @section('title')
-	广告管理--广告列表
+	文章管理--文章列表
 @endsection
 @section('content')
 <div class="row">
@@ -59,14 +59,7 @@
 									</td>
 									<td>{{$article->created_at}}</td>
                                     <td>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="true">操作
-                                                <span class="fa fa-caret-down"></span></button>
-                                            <ul class="dropdown-menu slim-menu">
-
-
-                                            </ul>
-                                        </div>
+                                        <a class="btn" data-method="DELETE" data-confirm="你确定删除该条数据吗？" href="{{route('admin.articles.destroy', [$article->id])}}"><i class="fa fa-times"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

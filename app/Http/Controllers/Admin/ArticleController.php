@@ -73,4 +73,19 @@ class ArticleController extends BaseController
 
         return redirect(route('admin.articles.index'));
     }
+    /**
+     * [destroy 删除]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function destroy($id)
+    {
+        $article = Article::find($id);
+        if (!$article) {
+            abort(404);
+        }
+        $article->delete();
+
+        return redirect(route('admin.articles.index'));
+    }
 }

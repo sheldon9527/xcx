@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-12">
                 @include('admin.common.errors')
-                <a data-toggle="modal" data-target="#addRootModal" class="pull-left btn btn-primary" type="button">添加主分类</a>
+                <a data-toggle="modal" data-target="#addRootModal" class="pull-left btn btn-success" type="button">主分类</a>
             </div>
         </div>
         <div class="row">&nbsp;</div>

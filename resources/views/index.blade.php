@@ -1,55 +1,70 @@
 <!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
 <html>
-<head>
-<title>管理平台</title>
-<!-- For-Mobile-Apps-and-Meta-Tags -->
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Sliding Forms Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
-	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- //For-Mobile-Apps-and-Meta-Tags -->
-<link href="/css/style.css" type="text/css" rel="stylesheet" media="all">
-<link href="/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <head>
+        <meta charset="UTF-8">
+        <title>@yield('title', '公众号小程序后台')</title>
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        <!-- Bootstrap 3.3.2 -->
+        <link href="/bower/AdminLTE/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="/bower/font-awesome/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="/bower/Ionicons/css/ionicons.min.css">
+        <!-- style.min.css -->
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Theme style -->
+        <link href="/bower/AdminLTE/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css"/>
+        <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+              page. However, you can choose any other skin. Make sure you
+              apply the skin class to the body tag so the changes take effect.
+        -->
+        <link href="/bower/AdminLTE/dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css"/>
 
-<!--web-fonts-->
-<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300italic,300,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-<!--//web-fonts-->
-</head>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="/bower/html5shiv/dist/html5shiv.min.js"></script>
+        <script src="/bower/respond/dest/respond.min.js"></script>
+        <![endif]-->
 
-<body>
-<h1>管理平台</h1>
-<section>
-  <div class="stage">
-    <div class="cbImage active signin agileits">
-		<form action="{{ route('admin.auth.login.post') }}" method="POST">
-            @include('admin.common.errors', ['errors'=>$errors])
-			<input type="text" name="username"  placeholder="登录账号" value="{{old('username')}}" required>
-			<input type="password" name="password" placeholder="密码" required>
-			<input type="submit" value="登录">
-		</form>
-	</div>
-    <div class="clear"></div>
-  </div>
-  <div class="clear"></div>
-  <div class="footer">
-  </div>
-</section>
-<script src="/js/jquery-2.1.4.min.js"></script>
-<script src="/js/coverflow-slideshow.js"></script>
-<script type="text/javascript">
+    </head>
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-36251023-1']);
-  _gaq.push(['_setDomainName', 'jqueryscript.net']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</body>
+    <body class="hold-transition login-page">
+        <div class="login-box">
+            <div class="login-logo">
+                <a href="../../index2.html"><b>TQY</b> - 公众号小程序</a>
+            </div>
+            <!-- /.login-logo -->
+            <div class="login-box-body">
+                <form action="{{ route('admin.auth.login.post') }}" method="POST">
+                    {{ csrf_field() }}
+                    @include('admin.common.errors', ['errors'=>$errors])
+                    <div class="form-group has-feedback">
+                        {{-- <input type="email" class="form-control" placeholder="Email"> --}}
+                        <input type="text" name="username" class="form-control" placeholder="用户名" value="{{old('username')}}" required>
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="password"  name="password" class="form-control" placeholder="密码" required>
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-8">
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-xs-4">
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">登陆</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+            </div>
+            <!-- /.login-box-body -->
+        </div>
+        <!-- /.login-box -->
+    </body>
 </html>

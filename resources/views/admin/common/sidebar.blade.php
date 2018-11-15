@@ -17,7 +17,7 @@
 
 			  <li class="{{\Route::is('admin.articles.*') ? 'active' : null }} treeview">
 					 <a href="#">
-						 <i class="fa fa-android"></i><span>文章管理</span>
+						 <i class="fa fa-list-alt"></i><span>文章管理</span>
 						 <i class="fa fa-angle-left pull-right"></i>
 					 </a>
 					 <ul class="treeview-menu">
@@ -36,7 +36,7 @@
 
 			  <li class="{{\Route::is('admin.categories.*') ? 'active' : ''}}">
 					<a href="{{route('admin.categories.index')}}">
-						<i class="fa fa-sitemap"></i><span>页面分类</span>
+						<i class="fa fa-sitemap"></i><span>导航分类</span>
 					</a>
 				</li>
 
