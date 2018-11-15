@@ -21,7 +21,7 @@
 						 <i class="fa fa-angle-left pull-right"></i>
 					 </a>
 					 <ul class="treeview-menu">
-						 <li class="{{\Route::is('admin.articles.index') ? 'active' : null }} treeview">
+						 <li class="{{\Route::is('admin.articles.index','admin.articles.edit') ? 'active' : null }} treeview">
 							 <a href="{{route('admin.articles.index')}}">
 								 <i class="fa fa-circle-o"></i>文章列表
 							 </a>

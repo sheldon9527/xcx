@@ -10,13 +10,14 @@ class StoreRequest extends Request
     public function rules()
     {
         return [
-
+            'category_ids' =>'required',
         ];
     }
 
     public function messages()
     {
         return [
+            'category_ids.required'=>'类别不能为空',
         ];
     }
 }

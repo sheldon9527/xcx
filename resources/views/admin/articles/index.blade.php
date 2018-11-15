@@ -61,13 +61,10 @@
                                     <td>
 
 										<div class="btn-group">
-                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="true">操作
-                                                <span class="fa fa-caret-down"></span></button>
+                                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="true">操作<span class="fa fa-caret-down"></span></button>
                                             <ul class="dropdown-menu slim-menu">
-												<a class="btn" href="{{route('admin.articles.edit', [$article->id])}}"><i class="fa fa-pencil-square-o"></i>
-												</a>
-												<a class="btn" data-method="DELETE" data-confirm="你确定删除该条数据吗？" href="{{route('admin.articles.destroy', [$article->id])}}"><i class="fa fa-times"></i>
-												</a>
+												<a class="btn" href="{{route('admin.articles.edit', [$article->id])}}">编辑</a>
+												<a class="btn " data-method="DELETE" data-confirm="你确定删除该条数据吗？" href="{{route('admin.articles.destroy', [$article->id])}}">删除</a>
                                             </ul>
                                         </div>
 

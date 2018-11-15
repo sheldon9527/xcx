@@ -10,13 +10,18 @@ class UpdateRequest extends Request
     public function rules()
     {
         return [
-
+            'category_ids' =>'required',
+            'title' =>'required',
+            'cover_image' =>'required',
         ];
     }
 
     public function messages()
     {
         return [
+            'category_ids.required'=>'类别不能为空',
+            'title.required'=>'标题不能为空',
+            'cover_image.required'=>'图片不能为空',
         ];
     }
 }

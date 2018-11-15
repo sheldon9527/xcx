@@ -13,7 +13,7 @@
                         <form action="{{route('admin.articles.store')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
                             <div class="modal-body col-sm-12">
 								<div class="form-group">
-									<label class="col-sm-3 control-label"><span class="text-red">*</span>文章分类</label>
+									<label class="col-sm-1 control-label"><span class="text-red">*</span>文章分类</label>
 									<div class="col-sm-6">
 										@foreach($categories as $category)
 											<label><input name="category_ids[]" type="checkbox" value="{{$category->id}}" />&nbsp;&nbsp;{{$category->name}}&nbsp;</label>
@@ -21,13 +21,13 @@
 									</div>
 								</div>
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label"><span class="text-red">*</span>文章链接:</label>
+                                    <label class="col-sm-1 control-label"><span class="text-red">*</span>文章链接</label>
                                     <div class="col-sm-6">
                                         <textarea name="url_content" rows="20" value="" class="form-control"></textarea>
                                     </div>
                                 </div>
 								<div class="form-group">
-	                                <label class="col-sm-3 control-label"><span class="text-red">*</span>文章状态:</label>
+	                                <label class="col-sm-1 control-label"><span class="text-red">*</span>文章状态</label>
 	                                <div class="col-sm-6">
 	                                    <select name="status" class="form-control" data-width="auto" required>
 	                                        <option value="active">激活</option>
@@ -36,7 +36,7 @@
 	                                </div>
 	                            </div>
 								<div class="form-group">
-									<label class="col-sm-9 control-label">
+									<label class="col-sm-7 control-label">
 										<button type="submit" class="btn btn-primary">保存</button>
 									</label>
 								</div>

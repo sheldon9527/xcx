@@ -22,7 +22,7 @@ class ArticleController extends BaseController
         if ($status = $request->get('status')) {
             $articles->where('status', $status);
         }
-        $articles = $articles->orderBy('status', 'asc')->orderBy('id', 'desc')->paginate();
+        $articles = $articles->orderBy('id', 'desc')->paginate();
 
         return view('admin.articles.index', compact('articles', 'status'));
     }
@@ -81,9 +81,18 @@ class ArticleController extends BaseController
      */
     public function edit($id)
     {
+        $article = Article::find($id);
+        if (!$article) {
+            abort(404);
+        }
+        $articleCategories = $article->categories;
+        $categoryIds = [];
+        foreach ($articleCategories as $articleCategory) {
+            array_push($categoryIds, $articleCategory->id);
+        }
         $categories = Category::where('parent_id', 0)->get();
 
-        return view('admin.articles.edit', compact('categories'));
+        return view('admin.articles.edit', compact('categories', 'categoryIds', 'article'));
     }
     /**
      * [update description]
@@ -93,7 +102,24 @@ class ArticleController extends BaseController
      */
     public function update($id, UpdateRequest $request)
     {
-        // code...
+        $categoryArray = $request->get('category_ids');
+        $title = $request->get('title');
+        $coverImage = $request->get('cover_image');
+        $status = $request->get('status');
+        $article = Article::find($id);
+        if (!$article) {
+            abort(404);
+        }
+        $article->title = $title;
+        $article->cover_image = $coverImage;
+        $article->status = $status;
+        $article->save();
+        if ($categoryArray && !empty($categoryArray)) {
+            $article->categories()->detach();
+            $article->categories()->attach($categoryArray);
+        }
+
+        return redirect(route('admin.articles.index'));
     }
     /**
      * [destroy 删除]
