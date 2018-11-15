@@ -41,11 +41,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'manager'], function () {
             'as' => 'admin.auth.logout',
             'uses' => 'AuthController@logout',
         ]);
-        // 后台统计信息
-        Route::get('dashboard', [
-            'as' => 'admin.dashboard',
-            'uses' => 'DashboardController@dashboard',
-        ]);
         /**
          * admins
          */

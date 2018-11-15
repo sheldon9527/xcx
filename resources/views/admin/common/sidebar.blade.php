@@ -10,11 +10,6 @@
                 </div>
             </div>
             <ul class="sidebar-menu">
-              <li class="{{
-					\Route::is('admin.dashboard') ? 'active' : null
-				}} treeview"><a href="{{route('admin.dashboard')}}"><i class="fa fa-dashboard"></i> <span>仪表盘</span> </a>
-              </li>
-
 			  <li class="{{\Route::is('admin.articles.*') ? 'active' : null }} treeview">
 					 <a href="#">
 						 <i class="fa fa-list-alt"></i><span>文章管理</span>

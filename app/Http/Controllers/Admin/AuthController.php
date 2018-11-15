@@ -13,7 +13,7 @@ class AuthController extends BaseController
     public function getLogin()
     {
         if ($this->user()) {
-            return redirect(route('admin.dashboard'));
+            return redirect(route('admin.articles.index'));
         }
 
         return view('index');
@@ -33,7 +33,7 @@ class AuthController extends BaseController
             return redirect(route('auth.login.get'))->withErrors(['用户名或密码错误'])->with('type', 'admin');
         }
 
-        $redirect = session('url.intended') ?: route('admin.dashboard');
+        $redirect = session('url.intended') ?: route('admin.articles.index');
 
         return redirect($redirect);
     }

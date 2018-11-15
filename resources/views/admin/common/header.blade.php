@@ -1,5 +1,5 @@
 <header class="main-header">
-    <a href="{{route('admin.dashboard')}}" class="logo">
+    <a href="" class="logo">
         <span class="logo-mini"><b></b></span>
         <span class="logo-lg"><b>{{app('admin')->user()->username}}</b></span>
     </a>

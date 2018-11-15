@@ -68,7 +68,7 @@ Page({
   //刷新数据
   refreshNewData:function(){
     //加载提示框
-    util.showLoading();
+    // util.showLoading();
 
     var that = this;
     var parameters = 'type='+types[this.data.currentTopItem];
@@ -163,9 +163,9 @@ Page({
 
   //加载更多操作
   loadMoreData:function(){
-    console.log("加载更多");
+    // console.log("加载更多");
     //加载提示框
-    util.showLoading();
+    // util.showLoading();
 
     var that = this;
     var parameters = 'type='+types[this.data.currentTopItem] + "&page="+(page+1);
