@@ -123,4 +123,5 @@
   vertical-align: middle;
   width:220rpx;
   height: 110rpx;
+  /*background-color: #909090;*/
 }
