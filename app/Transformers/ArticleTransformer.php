@@ -13,7 +13,7 @@ class ArticleTransformer extends TransformerAbstract
         unset($article['status'],$article['content'],$article['updated_at'],$article['created_at']);
         $article->created_time = Carbon::parse($article->created_at)->toDateString();
         $len = mb_strlen($article->title, 'utf-8');
-        $article->title = ($len > 28) ? mb_substr($article->title, 0, 28, 'utf-8').'...':$article->title;
+        $article->title = ($len > 27) ? mb_substr($article->title, 0, 27, 'utf-8').'...':$article->title;
 
         return $article->attributesToArray();
     }
