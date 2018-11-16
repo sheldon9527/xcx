@@ -37,11 +37,11 @@
 }
 .content-text{
   display: block;
-  font-size: 30rpx;
+  font-size: 32rpx;
   line-height: 40rpx;
   margin-bottom: 14rpx;
   color: #39394c;
-  letter-spacing:4rpx;
+  letter-spacing:3rpx;
 }
 .content-multimedia{
   text-align:center;
