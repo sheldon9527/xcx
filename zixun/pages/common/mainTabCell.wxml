@@ -3,7 +3,7 @@
     <view class="mainTabCell">
         <!--内容-->
         <view class="content">
-			<view class="left" style='width:69%;float:left;'>
+			<view class="left" style='width:67%;float:left;'>
 	            <text class="content-text">{{item.title}}</text>
 	            <view>
 					<view class='bottom_text' style='width:45%;float:left;'>
