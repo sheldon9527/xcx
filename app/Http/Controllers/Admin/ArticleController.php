@@ -18,13 +18,23 @@ class ArticleController extends BaseController
      */
     public function index(IndexRequest $request)
     {
-        $articles = Article::query();
+        $articles = Article::query()->select('articles.*');
         if ($status = $request->get('status')) {
             $articles->where('status', $status);
         }
-        $articles = $articles->orderBy('id', 'desc')->paginate();
+        if ($categoryId = $request->get('category_id')) {
+            $articles->leftJoin('article_category', 'articles.id', '=', 'article_category.article_id')
+                ->where('article_category.category_id', $categoryId);
+        }
+        $articles = $articles->orderBy('articles.id', 'desc')->paginate();
+        //追加额外参数，例如搜索条件
+        $articles = $articles->appends(array(
+            'category_id' => $categoryId,
+            'status' => $status,
+        ));
+        $categories = Category::where('parent_id', 0)->get();
 
-        return view('admin.articles.index', compact('articles', 'status'));
+        return view('admin.articles.index', compact('articles', 'status', 'categories', 'categoryId'));
     }
     /**
      * [create 创建公众号文章]
@@ -133,6 +143,27 @@ class ArticleController extends BaseController
             abort(404);
         }
         $article->delete();
+
+        return redirect(route('admin.articles.index'));
+    }
+    /**
+     * [multiDestory 批量删除]
+     * @param  IndexRequest $request [description]
+     * @return [type]                [description]
+     */
+    public function multiDestory(IndexRequest $request)
+    {
+        $ids = $request->get('ids');
+        $arrayIds = explode(',', $ids);
+        if (!empty($arrayIds)) {
+            foreach ($arrayIds as $id) {
+                $article = Article::find($id);
+                if (!$article) {
+                    continue;
+                }
+                $article->delete();
+            }
+        }
 
         return redirect(route('admin.articles.index'));
     }

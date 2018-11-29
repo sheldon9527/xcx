@@ -145,5 +145,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'manager'], function () {
             'as' => 'admin.articles.update',
             'uses' => 'ArticleController@update',
         ]);
+        Route::post('articles/multiDestory', [
+            'as' => 'admin.articles.multiDestory',
+            'uses' => 'ArticleController@multiDestory',
+        ]);
     });
 });

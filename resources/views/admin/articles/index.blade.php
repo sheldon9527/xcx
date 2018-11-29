@@ -8,8 +8,21 @@
         <div class="box">
             <div class="box-body">
 				<form class="form-inline" action="" method="get">
+
 					<div class="form-group">
 						<a href="{{route('admin.articles.create')}}" class="btn btn-success pull-left"><i class="fa fa-plus"></i></a>
+					</div>
+					<div class="form-group">
+						<div class="form-group">
+							<select name="category_id" id="category_id" class="form-control">
+								<option value="">分类</option>
+								@if($categories)
+									@foreach($categories as $category)
+										<option value="{{$category->id}}" @if($category->id == $categoryId) selected = "selected" @endif>{{$category->name}}</option>
+									@endforeach
+								@endif
+							</select>
+						</div>
 					</div>
 					<div class="form-group">
 						<div class="form-group">
@@ -28,16 +41,20 @@
 					 </div>
 				</form>
                 <div class="row">&nbsp;</div>
+				<button class="btn btn-danger pull-left" id='remove'><i class="fa fa-remove"></i></button>
+				<div class="row">&nbsp;</div>
                 <div class="row">
                     @include('admin.common.errors')
                     <div class="col-sm-12">
-                        <table id="infos" class="table table-bordered table-striped text-center">
+                        <table id="infos" class="table table-bordered table-striped text-center dataTableSelect">
                             <thead>
                                 <tr role="row">
+									<th class="sorting" tabindex="0"  rowspan="1" colspan="1"><input name="" type="checkbox" value="asdasd"></th>
                                     <td>ID</td>
-									<td>公众号名称</td>
+									<td>公众号</td>
+									<td>分类</td>
 									<td>标题</td>
-									<td>图片</td>
+									<!-- <td>图片</td> -->
 									<td>链接</td>
 									<td>状态</td>
 									<td>创建时间</td>
@@ -47,10 +64,20 @@
                             <tbody>
                                 @foreach($articles as $article)
                                 <tr role="row">
+									<td class="checkhiddenInput">
+										<input name="input" type="checkbox" value="{{$article->id}}">
+									</td>
                                     <td>{{$article->id}}</td>
 									<td>{{$article->user_name}}</td>
+									<td>
+										@if($article->categories)
+											@foreach($article->categories  as $category)
+												{{$category->name}},
+											@endforeach
+										@endif
+									</td>
 									<td>{{$article->title}}</td>
-									<td><img src="{{$article->cover_image}}" width="50px" height="30px"></td>
+									<!-- <td><img src="{{$article->cover_image}}" width="50px" height="30px"></td> -->
 									<td>{{$article->url}}</td>
                                     <td>
 										<span @if($article->status == 'active') class="badge bg-green" @else class="badge bg-red"  @endif>
@@ -93,8 +120,64 @@
             $("#status").find('option').each(function(){
                 $(this).removeAttr('selected');
             });
-
+			$("#category_id").find('option').each(function(){
+				$(this).removeAttr('selected');
+			});
         });
+
+
+		$(document).ready(function() {
+		    $("table.dataTableSelect > thead > tr  input[type=checkbox]").bind("click", function() {
+		        selectAllCheckBox(this.checked);
+		    });
+		});
+		function selectAllCheckBox(bool) {
+		    $("table.dataTableSelect > tbody > tr  input[type=checkbox]").attr("checked", bool).prop("checked", bool);
+		    $("table.dataTableSelect tbody tr td input[type=checkbox]:not(input[disabled])").attr("checked", bool).prop("checked", bool);
+		}
+		function getCheckboxValue() {
+		    var adIds = "";
+		    $("table.dataTableSelect > tbody > tr  input[type=checkbox]:checked").each(function(i) {
+		        if (0 == i) {
+		            adIds = $(this).val();
+		        } else {
+		            adIds += ("," + $(this).val());
+		        }
+		    });
+		    return adIds;
+		}
+
+		function buildForm(method,action,data){
+		    var form = $('<form></form>');
+		    // 设置属性
+		    form.attr('action', action);
+		    form.attr('method', method);
+		    // 创建Input
+		    for (var i = 0; i < data.length; i++) {
+		        formInput = $('<input type="hidden" name="'+data[i].name+'" />');
+		        formInput.attr('value', data[i].value);
+		        form.append(formInput);
+		    }
+		    $(document.body).append(form);
+		    // 提交表单
+		    form.submit();
+		    return false;
+			}
+		$("#remove").on('click',function(){
+		    ids = getCheckboxValue();
+		    if (ids == "") {
+		        alert("请先选择一条数据！");
+		    }else{
+		        alert('你确定删除？');
+		        data = [
+		            {
+		                'name':'ids',
+		                'value':ids,
+		            }
+		        ];
+		        buildForm('post','/manager/articles/multiDestory',data);
+		    }
+		});
     });
 </script>
 @endsection
