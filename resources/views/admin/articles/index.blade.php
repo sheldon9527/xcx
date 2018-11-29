@@ -42,7 +42,6 @@
 				</form>
                 <div class="row">&nbsp;</div>
 				<button class="btn btn-danger pull-left" id='remove'><i class="fa fa-remove"></i></button>
-				<div class="row">&nbsp;</div>
                 <div class="row">
                     @include('admin.common.errors')
                     <div class="col-sm-12">
