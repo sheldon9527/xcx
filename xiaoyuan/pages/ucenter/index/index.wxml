@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="profile-info" bindtap="goLogin">
+    <image class="avatar" src="{{userInfo.avatar}}"></image>
+    <view class="info">
+      <text class="name">{{userInfo.nickname}}</text>
+      <text class="level">{{userInfo.username}}</text>
+    </view>
+  </view>
+
+  <view class="user-menu">
+    <view class="item">
+      <navigator url="../address/address" class="a">
+        <text class="icon address"></text>
+        <text class="txt">地址管理</text>
+      </navigator>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,16 @@
+
+<view class="hidden {{navigationbar}} {{naviphone}}">
+    <image src="{{toplogo}}"></image>
+</view>
+<view class="container">
+    <view class="swiper-container">
+        <swiper autoplay="{{autoplay}}" bindchange="swiperchange" circular="circular" class="swiper_box" duration="{{duration}}" interval="{{interval}}">
+            <swiper-item wx:for="{{carouselInfo}}" wx:key="{{item.id}}" bindtap="specialTo" data-carousel_type="{{item.carousel_type}}" data-carousel_type_data="{{item.carousel_type_data}}">
+                <image bindtap="tapBanner" class="slide-image" data-id="{{item.businessId}}" src="{{item.picUrl}}"></image>
+            </swiper-item>
+        </swiper>
+        <view class="dots">
+            <view class="dot{{index==swiperCurrent?' active':''}}" wx:for="{{carouselInfo}}" wx:key="id"></view>
+        </view>
+    </view>
+</view>
