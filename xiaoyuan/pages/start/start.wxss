@@ -179,8 +179,8 @@ page{
 	-webkit-tap-highlight-color:transparent;
 	overflow:hidden;
 	color:#000000;
-	background-color: #b9e563;
-    border-color: #b9e563;
+	background-color: #3cc196;
+    border-color: #3cc196;
     color: #FFF;
 	border-radius: 45px;
 }
