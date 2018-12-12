@@ -19,10 +19,9 @@ page{
   padding: 0;
   height: 100%;
   overflow: hidden;
-  margin-top: 132rpx;
   justify-content: space-between;
   box-sizing: border-box;
-} 
+}
 .content{
   flex: 1;
   display: flex;
@@ -165,6 +164,25 @@ page{
 }
 .confirm-btn:active {
   opacity: .8;
+}
+
+.con {
+	position:relative;
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	padding-left:14px;
+	padding-right:14px;
+	box-sizing:border-box;
+	font-size:17px;
+	border-radius:5px;
+	-webkit-tap-highlight-color:transparent;
+	overflow:hidden;
+	color:#000000;
+	background-color: #b9e563;
+    border-color: #b9e563;
+    color: #FFF;
+	border-radius: 45px;
 }
 
 

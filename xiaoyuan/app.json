@@ -8,10 +8,9 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "xiaoT科技商城",
-    "navigationBarTextStyle": "black",
-    "navigationStyle": "custom"
+    "navigationBarBackgroundColor": "#333",
+    "navigationBarTitleText": "北信校园故障报修",
+    "navigationBarTextStyle": "#fff"
   },
   "tabBar": {
     "color": "#838383",

@@ -13,9 +13,9 @@
       </view>
       <view class="bd">
          <image class="smalltitle" src="/static/images/more/confirm-word1.png"></image>
-        <view class="confirm-btn" bindtap='goToIndex'>
-          <text open-type="getUserInfo">校园报修</text>
-        </view>
+			<view class="confirm-btn" bindtap='goToIndex'>
+			  <button class="con" open-type="getUserInfo">校园报修</button>
+	        </view>
       </view>
     </view>
   </block>
