@@ -11,7 +11,7 @@
     <view class="item">
       <navigator url="../address/address" class="a">
         <text class="icon address"></text>
-        <text class="txt">地址管理</text>
+        <text class="txt">报修管理</text>
       </navigator>
     </view>
   </view>

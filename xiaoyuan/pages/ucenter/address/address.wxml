@@ -3,7 +3,7 @@
         <navigator delta="1" hoverClass="navigator-hover" openType="navigateBack">
             <image class="goback" src="../../../images/goback.png"></image>
         </navigator>
-        <view class="header-name">我的地址</view>
+        <view class="header-name">我的报修</view>
     </view>
     <view class="address-list" wx:if="{{ addressList.length > 0 }}">
         <view class="a-address" wx:for="{{addressList}}" wx:key="{{item.id}}" >
