@@ -7,27 +7,23 @@ var that;
 Page({
     data: {
         swiperCurrent: 0,// ++
+		interval: 6e3,// ++
         autoplay: 1,
-        interval: 6e3,// ++
-        newGoods: [],
-        hotGoods: [],
-        duration: 1000,
-        topics: [],
-        brands: [],
-        floorGoods: [],
         carouselInfo: [],
         wxlogin: 0, // ++ 是否登陆
-        hovercoupons: 1, // ++是否移动到优惠券
-        specialList: [],
 		images: [],
-	    uploadedImages: []
-    },
-    onShareAppMessage: function() {
-        return {
-            title: 'XiaoTShop',
-            desc: 'XiaoT科技商城',
-            path: '/pages/index/index'
-        }
+	    uploadedImages: [],
+		items: [
+	      {name: 'USA', value: '美国'},
+	      {name: 'CHN', value: '中国', checked: 'true'},
+	      {name: 'BRA', value: '巴西'},
+	      {name: 'JPN', value: '日本'},
+	      {name: 'ENG', value: '英国'},
+	      {name: 'TUR', value: '法国'},
+	  	],
+		title: '',
+		category_id:'',
+		description:''
     },
     swiperchange: function(x) {
         let that = this;
@@ -74,6 +70,21 @@ Page({
     onUnload: function() {
         // 页面关闭
     },
+	bindTitle(e) {
+	    this.setData({
+	      title: e.detail.value
+	    })
+	 },
+	radioChangeCategory(e) {
+		this.setData({
+	      category_id: e.detail.value
+	    })
+   	},
+    bindTextAreaBlur(e) {
+		this.setData({
+	      description: e.detail.value
+	    })
+	},
 
 	chooseImage: function () {
 	    // 选择图片
@@ -101,30 +112,32 @@ Page({
 	      urls: this.data.images
 	    })
 	  },
-	  submit: function () {
-		  console.log(that.data.images);
-	    // 提交图片，事先遍历图集数组
-	    that.data.images.forEach(function (tempFilePath) {
-	      new AV.File('file-name', {
-	        blob: {
-	          uri: tempFilePath,
-	        },
-	      }).save().then(
-	        // file => console.log(file.url())
-	      function (file) {
-	        // 先读取
-	        var uploadedImages = that.data.uploadedImages;
-	        uploadedImages.push(file.url());
-	        // 再写入
-	        that.setData({
-	          uploadedImages: uploadedImages
-	        }); console.log(uploadedImages);
-	      }
-	      ).catch(console.error);
-	    });
-	    wx.showToast({
-	      title: '评价成功', success: function () {
-	        wx.navigateBack();
+
+	  saveContent(){
+	    if (this.data.title == '') {
+	      util.showErrorToast('请输入标题');
+	      return false;
+	    }
+	    if (this.data.category_id == '') {
+	      util.showErrorToast('请选择类型');
+	      return false;
+	    }
+	    if (this.data.description == '') {
+	      util.showErrorToast('请输入详细描述');
+	      return false;
+	    }
+
+	    let that = this;
+	    util.request(api.AddressSave, {
+	      title: this.data.title,
+	      category_id: this.data.category_id,
+	      description: this.data.description,
+	      images: this.data.images,
+	    }, 'POST').then(function (res) {
+	      if (res.code === 200) {
+	        wx.navigateTo({
+	          url: '/pages/index/index',
+	        })
 	      }
 	    });
 	  },
@@ -134,5 +147,6 @@ Page({
 	    that.setData({
 	      images: images
 	    });
-	  }
+	},
+
 })

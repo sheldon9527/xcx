@@ -153,24 +153,8 @@ function getUserInfo() {
                 resolve(res);
             },
             fail: function(err) {
-
                 console.log(err);
                 reject(err);
-				wx.showModal({
-				 title: '警告',
-				 content: '您点击了拒绝授权,将无法正常显示个人信息,点击确定重新获取授权。',
-				 success: function (res) {
-				   if (res.confirm) {
-					 wx.openSetting({
-					   success: (res) => {
-						 if (res.authSetting["scope.userInfo"]) {////如果用户重新同意了授权登录
-						   goLoginPageTimeOut();
-						 }
-					   }
-					 })
-				   }
-				 }
-			   })
             }
         })
     });

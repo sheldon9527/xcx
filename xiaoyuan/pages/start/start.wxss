@@ -196,3 +196,33 @@ page{
   padding: 30rpx;
   text-align: center;
 }
+
+.first{
+	font-size: 18pt;
+	position: absolute;
+	top: 50rpx;
+	left: 50%;
+	width: 600rpx;
+	height: 200rpx;
+	margin-left: -270rpx;
+	opacity: 0;
+	animation: show 2.5s cubic-bezier(0.19, 1, 0.22, 1) .5s forwards;
+	letter-spacing:6pt;
+	font-family:'CloudKaiXingGBK';
+	color: #5f5c5c;
+}
+
+.two{
+	font-size: 18pt;
+	position: absolute;
+	top: 130rpx;
+	left: 50%;
+	width: 600rpx;
+	height: 200rpx;
+	margin-left: -220rpx;
+	opacity: 0;
+	animation: show 2.5s cubic-bezier(0.19, 1, 0.22, 1) .5s forwards;
+	letter-spacing:6pt;
+	font-family:'CloudKaiXingGBK';
+	color: #5f5c5c;
+}

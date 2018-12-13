@@ -12,7 +12,12 @@
         <image class="wave wave-bg" src="/static/images/more/wave.png" mode="aspectFill"></image>
       </view>
       <view class="bd">
-         <image class="smalltitle" src="/static/images/more/confirm-word1.png"></image>
+		    <view class="first">
+				<text>美丽校园   拥抱梦想</text>
+			</view>
+			<view class="two">
+				<text>莘莘学子的家园</text>
+			</view>
 			<view class="confirm-btn" bindtap='goToIndex'>
 			  <button class="con" open-type="getUserInfo">校园报修</button>
 	        </view>
