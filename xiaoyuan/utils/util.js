@@ -18,7 +18,7 @@ function goLoginPageTimeOut() {
         wx.reLaunch({
             url: "/pages/authorize/index"
         })
-    }, 3000)
+    }, 1000)
 }
 
 function formatNumber(n) {

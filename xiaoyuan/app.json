@@ -8,16 +8,16 @@
 	"pages/authorize/index"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#333",
-    "navigationBarTitleText": "北信校园故障报修",
-    "navigationBarTextStyle": "#fff"
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#3cc196",
+    "navigationBarTitleText": "北信校园",
+	"navigationBarTextStyle": "light"
   },
   "tabBar": {
-    "color": "#838383",
-    "selectedColor": "#b4282d",
+    "color": "#3cc196",
+    "selectedColor": "#3cc196",
     "borderStyle": "white",
-    "backgroundColor": "#fff",
+    "backgroundColor": "#3cc196",
     "list": [
       {
         "pagePath": "pages/index/index",
