@@ -1,5 +1,4 @@
 var api = require('../config/api.js');
-
 function formatTime(date) {
     var year = date.getFullYear()
     var month = date.getMonth() + 1
@@ -13,12 +12,13 @@ function formatTime(date) {
     return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 
+
 function goLoginPageTimeOut() {
     setTimeout(function() {
         wx.reLaunch({
-            url: "/pages/index/index"
+            url: "/pages/authorize/index"
         })
-    }, 1000)
+    }, 3000)
 }
 
 function formatNumber(n) {
@@ -153,6 +153,7 @@ function getUserInfo() {
                 resolve(res);
             },
             fail: function(err) {
+				goLoginPageTimeOut();
                 console.log(err);
                 reject(err);
             }

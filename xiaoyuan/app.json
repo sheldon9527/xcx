@@ -4,7 +4,8 @@
     "pages/index/index",
 	"pages/ucenter/index/index",
     "pages/ucenter/address/address",
-    "pages/ucenter/addressAdd/addressAdd"
+    "pages/ucenter/addressAdd/addressAdd",
+	"pages/authorize/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
