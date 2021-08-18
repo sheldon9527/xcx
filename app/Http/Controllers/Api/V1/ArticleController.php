@@ -70,7 +70,7 @@ class ArticleController extends BaseController
                 $item->where('article_category.category_id', $typeId);
             });
         }
-        $articles = $articles->orderBy(\DB::raw('RAND()'))->paginate(10);
+        $articles = $articles->orderBy('id', 'desc')->paginate(10);
 
         return $this->response->paginator($articles, new ArticleTransformer);
     }
