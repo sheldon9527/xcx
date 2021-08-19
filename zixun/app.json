@@ -1,18 +1,20 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-	"pages/index/detail",
+    "pages/index/detail",
+	"pages/index/details",
     "pages/logs/logs"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "",
-    "navigationBarTextStyle":"white",
+    "navigationBarTextStyle": "white",
     "backgroundColor": "#eaeaea"
   },
   "networkTimeout": {
     "request": 15000
   },
-  "debug":false
+  "debug": false,
+  "sitemapLocation": "sitemap.json"
 }

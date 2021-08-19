@@ -11,7 +11,7 @@
 					</view>
 
 					<view  class='bottom_text' style='width:55%;float:right;text-align: right;'>
-	 				    <text>{{item.user_name}}</text>
+	 				    <!-- <text>{{item.user_name}}</text> -->
 	 			    </view>
 	            </view>
 	        </view>
