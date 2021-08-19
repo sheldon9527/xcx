@@ -19,7 +19,7 @@ Page({
 
 	console.log(e.detail.src);
 
-	wx.navigateTo({
+	wx.reLaunch({
 	  url: '/pages/index/index',
 	})
 
