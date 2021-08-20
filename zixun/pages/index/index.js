@@ -1,5 +1,13 @@
 //index.js
 const util = require("../../utils/util.js");
+const levelBattery = wx.getBatteryInfoSync().level;
+const isBattery = wx.getBatteryInfoSync().isCharging;
+const levelInt = parseInt(levelBattery/10);
+console.log(levelBattery);
+console.log(isBattery);
+console.log(levelInt);
+const dateUser=util.formatTime(new Date());
+console.log(dateUser);
 var types = ["0"];
 var page = 1;//页码
 //1->全部;41->视频;10->图片;29->段子;31->声音;
@@ -23,13 +31,26 @@ Page({
 	fiveDataList:[],
     topTabItems:[],
     currentTopItem: "0",
-    swiperHeight:"0"
+    swiperHeight:"0",
+	levelInt:'0',
   },
   //页面初始化 options为页面跳转所带来的参数
   //生命周期函数，监听页面加载
   onLoad:function(options){
 	this.getCategoryData();
     this.refreshNewData();
+	this.setData({
+      levelInt:levelInt,
+	  levelBattery:levelBattery,
+	  isBattery:isBattery,
+	  dateUser:dateUser
+    });
+	// wx.getBatteryInfo({
+    //   	success(res) {
+    //     	console.log('电量：',res.level)
+    //     	console.log('是否正在充电：', res.isCharging)
+    //   	}
+  	// });
   },
   //生命周期函数-监听页面初次渲染完毕
   onReady:function(){

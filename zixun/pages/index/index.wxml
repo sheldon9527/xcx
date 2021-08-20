@@ -1,6 +1,13 @@
 <!--index.wxml-->
 <import src="../common/mainTabCell.wxml" />
+<view class="complex">
+	<view class="levelBattery">{{levelBattery}}%</view>
+    <view data-charge='{{levelInt}}' class="battery"></view>
+	<view wx:if="{{isBattery}}" class="chongBattery">充电中...</view>
+	<view class="dataBattery">{{dateUser}}</view>
+</view>
 
+<view >
 <view class="top-tab">
   <view class="top-tab-item {{currentTopItem==idx ? 'active' : ''}}" wx:for="{{topTabItems}}" wx:for-index="idx" data-idx="{{idx}}" bindtap="switchTab">
     {{item}}
@@ -36,7 +43,7 @@
   </swiper-item>
 
   <!--two-->
-  <swiper-item>
+  <swiper-item  wx:if="twoDataList">
     <scroll-view class="scrollView" scroll-y="true" bindscrolltolower="loadMoreData" bindscrolltoupper="refreshData">
 
       <block wx:for="{{twoDataList}}" wx:for-item="item">
@@ -49,7 +56,7 @@
   </swiper-item>
 
   <!--three-->
-  <swiper-item>
+  <swiper-item  wx:if="threeDataList">
     <scroll-view class="scrollView" scroll-y="true" bindscrolltolower="loadMoreData" bindscrolltoupper="refreshData">
 
       <block wx:for="{{threeDataList}}" wx:for-item="item">
@@ -61,30 +68,5 @@
     </scroll-view>
   </swiper-item>
 
-  <!--four-->
-  <swiper-item>
-    <scroll-view class="scrollView" scroll-y="true" bindscrolltolower="loadMoreData" bindscrolltoupper="refreshData">
-
-      <block wx:for="{{fourDataList}}" wx:for-item="item">
-          <navigator url="detail?url={{item.url}}">
-            <template is="mainTabCell" data="{{item}}" />
-          </navigator>
-      </block>
-
-    </scroll-view>
-  </swiper-item>
-
-  <!--five-->
-  <swiper-item>
-	<scroll-view class="scrollView" scroll-y="true" bindscrolltolower="loadMoreData" bindscrolltoupper="refreshData">
-
-	  <block wx:for="{{fiveDataList}}" wx:for-item="item">
-		  <navigator url="detail?url={{item.url}}">
-			<template is="mainTabCell" data="{{item}}" />
-		  </navigator>
-	  </block>
-
-	</scroll-view>
-  </swiper-item>
-
 </swiper>
+</view>

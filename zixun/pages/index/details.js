@@ -23,6 +23,16 @@ Page({
 	  url: '/pages/index/index',
 	})
 
-  }
+},
+
+loadError:function(e){
+
+  console.log(e.detail.src);
+
+  wx.reLaunch({
+	url: '/pages/index/index',
+  })
+
+}
 
 })
