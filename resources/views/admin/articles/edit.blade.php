@@ -28,6 +28,12 @@
 									</div>
 								</div>
 								<div class="form-group">
+									<label class="col-sm-1 control-label"><span class="text-red">*</span>url</label>
+									<div class="col-sm-6">
+										<input type="text" name="url" value="{{$article->url}}" class="form-control" required>
+									</div>
+								</div>
+								<div class="form-group">
 									<label class="col-sm-1 control-label"><span class="text-red">*</span>图片地址</label>
 									<div class="col-sm-6">
 										<input type="text" name="cover_image" value="{{$article->cover_image}}" class="form-control" required>

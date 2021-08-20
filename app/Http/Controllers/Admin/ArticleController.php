@@ -114,6 +114,7 @@ class ArticleController extends BaseController
     {
         $categoryArray = $request->get('category_ids');
         $title = $request->get('title');
+        $url = $request->get('url');
         $coverImage = $request->get('cover_image');
         $status = $request->get('status');
         $article = Article::find($id);
@@ -121,6 +122,7 @@ class ArticleController extends BaseController
             abort(404);
         }
         $article->title = $title;
+        $article->url = $url;
         $article->cover_image = $coverImage;
         $article->status = $status;
         $article->save();
